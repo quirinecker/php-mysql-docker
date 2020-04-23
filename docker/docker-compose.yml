@@ -1,0 +1,51 @@
+
+version: '3.2'
+
+services:
+  php:
+    container_name: wdt_php
+    build: php
+    networks:
+      - backend
+    volumes:
+      - .././htdocs/:/var/www/html/
+
+  httpd:
+    container_name: wdt_httpd
+    build: httpd
+    depends_on:
+      - php
+      - mysql
+    networks:
+      - frontend
+      - backend
+    ports:
+      - 80:80
+    volumes:
+      - .././htdocs/:/var/www/html/
+
+  mysql:
+    container_name: wdt_mysql
+    image: mysql:5.6.40
+    networks:
+      - backend
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 3306:3306
+
+  phpmyadmin:
+    container_name: wdt_phpmyadmin
+    image: phpmyadmin/phpmyadmin:4.9
+    networks:
+      - backend
+    ports:
+      - 8080:80
+    environment:
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: root
+
+networks:
+  frontend:
+  backend:
+
