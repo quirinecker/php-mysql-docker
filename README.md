@@ -4,6 +4,6 @@
 
 - run `startdocker.sh`
 - move files for the webserver into `./htdocs`
-- type localhost in the webbrowser
+- request the webserver's content with `localhsot` in the webserver
 - select which file you want to open in the browser
 - setup your databse with phpmyadmin under localhost:8080 with username and password root
