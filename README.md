@@ -6,3 +6,4 @@
 - move files for the webserver into `./htdocs`
 - type localhost in the webbrowser
 - select which file you want to open in the browser
+- setup your databse with phpmyadmin under localhost:8080 with username and password root
